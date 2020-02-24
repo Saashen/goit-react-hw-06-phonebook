@@ -1,0 +1,14 @@
+.App {
+  width: 270px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+.Phonebook {
+  display: block;
+}
+
+.Contacts {
+  display: block;
+}

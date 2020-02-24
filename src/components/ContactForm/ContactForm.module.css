@@ -1,0 +1,22 @@
+.form {
+  width: 400px;
+  display: flex;
+  flex-flow: wrap column;
+  justify-content: center;
+  padding-bottom: 10px;
+}
+
+.label {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.caption {
+  display: block;
+  width: 100px;
+}
+
+.button {
+  width: 100px;
+  margin: 0 auto;
+}

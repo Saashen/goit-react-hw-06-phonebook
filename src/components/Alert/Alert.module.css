@@ -1,0 +1,14 @@
+.Alert {
+  width: 200px;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background-color: rgba(197, 25, 25, 0.7);
+  color: #ffffff;
+  border-radius: 6px;
+}
+
+.Text {
+  display: flex;
+  justify-content: center;
+}

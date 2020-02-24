@@ -1,0 +1,15 @@
+.Filter {
+  width: 266px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* .Caption {
+  display: flex;
+  justify-content: center;
+}
+
+.Input {
+  display: flex;
+  margin: 0 auto;
+} */
