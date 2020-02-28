@@ -1,5 +1,8 @@
 .Contacts {
+  width: 270px;
   padding-left: 20px;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 14px;
 }
 
 .Contact {

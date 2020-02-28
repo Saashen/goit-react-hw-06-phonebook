@@ -1,23 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 import styles from './ContactList.module.css';
+import slideTransition from '../../transitions/slide.module.css';
 
-import ContactListItem from '../ContactListItem/ContactListItem';
+import ContactListItem from '../ContactListItem/ContactListItemContainer';
 
 const ContactList = ({ contacts }) => (
-  <ul className={styles.Contacts}>
+  <TransitionGroup component="ul" className={styles.Contacts}>
     {contacts.map(contact => (
-      <ContactListItem
-        name={contact.name}
-        number={contact.number}
-        id={contact.id}
-        className={styles.Contact}
+      <CSSTransition
         key={contact.id}
-      />
+        timeout={250}
+        classNames={slideTransition}
+        unmountOnExit
+      >
+        <ContactListItem
+          name={contact.name}
+          number={contact.number}
+          id={contact.id}
+          className={styles.Contact}
+          key={contact.id}
+        />
+      </CSSTransition>
     ))}
-  </ul>
+  </TransitionGroup>
 );
 
 ContactList.propTypes = {
@@ -26,8 +34,4 @@ ContactList.propTypes = {
   ).isRequired,
 };
 
-const mapStateToProps = state => ({
-  contacts: state.contacts,
-});
-
-export default connect(mapStateToProps)(ContactList);
+export default ContactList;

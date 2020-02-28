@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import { CSSTransition } from 'react-transition-group';
 import PropTypes from 'prop-types';
-import uuid from 'uuid/v4';
 
-import * as pbActions from '../../redux/phonebookActions';
+import uuid from 'uuid/v4';
 import styles from './ContactForm.module.css';
+import slideAlertTransition from '../../transitions/slideAlert.module.css';
 
 import Alert from '../Alert/Alert';
 
-class ContactForm extends Component {
+export default class ContactForm extends Component {
   state = {
     name: '',
     number: '',
@@ -22,12 +22,21 @@ class ContactForm extends Component {
 
   static propTypes = {
     onAddContact: PropTypes.func.isRequired,
+    getContactFromLS: PropTypes.func.isRequired,
     contacts: PropTypes.arrayOf(
       PropTypes.shape({
-        name: PropTypes.string.isRequired,
+        name: PropTypes.string,
       }),
     ).isRequired,
   };
+
+  componentDidMount() {
+    const contactsFromLS = localStorage.getItem('contacts');
+    if (contactsFromLS) {
+      const { getContactFromLS } = this.props;
+      getContactFromLS(JSON.parse(contactsFromLS));
+    }
+  }
 
   isInContactList = (contact, name) =>
     this.props.contacts.find(c => c.name.toLowerCase() === name.toLowerCase())
@@ -65,7 +74,17 @@ class ContactForm extends Component {
     const { nameId, numberId } = this.id;
     return (
       <>
-        {isAlert && <Alert />}
+        <CSSTransition
+          in={isAlert}
+          timeout={250}
+          classNames={slideAlertTransition}
+          unmountOnExit
+          onEntered={() =>
+            setTimeout(() => this.setState({ isAlert: false }), 1500)
+          }
+        >
+          <Alert />
+        </CSSTransition>
         <form className={styles.form} onSubmit={this.handleSubmit}>
           <label className={styles.label} htmlFor={nameId}>
             <span className={styles.caption}>Name</span>
@@ -97,13 +116,3 @@ class ContactForm extends Component {
     );
   }
 }
-
-const mapStateToProps = state => ({
-  contacts: state.contacts,
-});
-
-const mapDispatchToProps = dispatch => ({
-  onAddContact: contact => dispatch(pbActions.addContact(contact)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(ContactForm);

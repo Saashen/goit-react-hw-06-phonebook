@@ -4,12 +4,12 @@
   justify-content: space-between;
 }
 
-/* .Caption {
-  display: flex;
-  justify-content: center;
+.Caption {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 14px;
 }
 
 .Input {
-  display: flex;
-  margin: 0 auto;
-} */
+  border: 2px rgba(44, 23, 69, 0.4) solid;
+  border-radius: 4px;
+}

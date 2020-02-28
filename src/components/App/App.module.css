@@ -7,8 +7,12 @@
 
 .Phonebook {
   display: block;
+  font-family: 'Pacifico', serif;
+  color: #2c1745;
 }
 
 .Contacts {
   display: block;
+  font-family: 'Pacifico', serif;
+  color: #2c1745;
 }

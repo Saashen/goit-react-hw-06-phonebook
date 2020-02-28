@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from './App.module.css';
 
-import ContactForm from '../ContactForm/ContactForm';
-import Filter from '../Filter/Filter';
-// import ContactList from '../ContactList/ContactList';
+import ContactForm from '../ContactForm/ContactFormContainer';
+import Filter from '../Filter/FilterContainer';
+import ContactList from '../ContactList/ContactListContainer';
 
 const App = () => (
   <div className={styles.App}>
@@ -11,7 +11,7 @@ const App = () => (
     <ContactForm />
     <h1 className={styles.Contacts}>Contacts</h1>
     <Filter />
-    {/* <ContactList /> */}
+    <ContactList />
   </div>
 );
 

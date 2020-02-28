@@ -4,6 +4,8 @@
   flex-flow: wrap column;
   justify-content: center;
   padding-bottom: 10px;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 14px;
 }
 
 .label {
@@ -16,7 +18,17 @@
   width: 100px;
 }
 
+.input {
+  border: 2px rgba(44, 23, 69, 0.4) solid;
+  border-radius: 4px;
+}
+
 .button {
-  width: 100px;
   margin: 0 auto;
+  padding: 4px 20px 5px;
+  border: 2px #e3e694 solid;
+  border-radius: 4px;
+  background-color: #e3e694;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 14px;
 }

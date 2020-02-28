@@ -1,7 +1,8 @@
 import { createStore } from 'redux';
 import { devToolsEnhancer } from 'redux-devtools-extension';
-import phonebookReducer from './phonebookReducers';
+// import phonebookReducer from './phonebook/phonebookReducers';
+import rootReducer from './rootReducer';
 
-const store = createStore(phonebookReducer, devToolsEnhancer());
+const store = createStore(rootReducer, devToolsEnhancer());
 
 export default store;
