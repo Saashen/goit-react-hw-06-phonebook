@@ -10,11 +10,7 @@ import ContactForm from '../ContactForm/ContactFormContainer';
 import Filter from '../Filter/FilterContainer';
 import ContactList from '../ContactList/ContactListContainer';
 
-// 3.1. допилити alert
-// 3.2. залипання кнопки
-// 3.3. стиль інпутів
 // 4. додати верифікацію
-// 4.1. сортування в алфавітному порядку
 // 5. переписати на ...
 
 export default class App extends Component {

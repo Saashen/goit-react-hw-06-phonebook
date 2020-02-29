@@ -22,8 +22,11 @@
 }
 
 .Input {
+  width: 165px;
+  padding-left: 5px;
   border: 2px rgba(44, 23, 69, 0.4) solid;
   border-radius: 4px;
+  font-family: 'Ubuntu', sans-serif;
 }
 
 .Button {
@@ -38,14 +41,11 @@
   margin-top: 12px;
   padding: 4px 20px 5px;
   text-align: center;
+  cursor: pointer;
 }
 
-.Button:hover,
 .Button:focus {
-  background: #b4495e;
-  background: linear-gradient(#732a5a, #b4495e);
-  border: solid 1px #2c1745;
-  box-shadow: inset 0 0 0 1px #b65c6e;
+  outline: none;
 }
 
 .Button:active {
@@ -54,4 +54,13 @@
   border: solid 1px #2c1745;
   box-shadow: inset 0 10px 15px 0 #b65c6e;
   top: 2px;
+}
+
+@media (min-width: 942px) {
+  .Button:hover {
+    background: #b4495e;
+    background: linear-gradient(#732a5a, #b4495e);
+    border: solid 1px #2c1745;
+    box-shadow: inset 0 0 0 1px #b65c6e;
+  }
 }

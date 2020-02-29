@@ -1,14 +1,16 @@
 .Alert {
-  width: 200px;
+  width: 260px;
+  padding: 20px 0;
   position: absolute;
-  top: 15px;
+  top: 30px;
   right: 15px;
-  background-color: #d9645e;
-  color: #ffffff;
-  border-radius: 6px;
-}
-
-.Text {
   display: flex;
   justify-content: center;
+  align-items: center;
+  background-color: rgba(217, 100, 94, 0.8);
+  color: #ffffff;
+  border-radius: 4px;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 16px;
+  box-shadow: 0px 4px 13px 0px #a5a5a5;
 }

@@ -3,7 +3,7 @@ import styles from './Alert.module.css';
 
 const Alert = () => (
   <div className={styles.Alert}>
-    <p className={styles.Text}>Contact already exists!</p>
+    <p>Contact already exists!</p>
   </div>
 );
 
