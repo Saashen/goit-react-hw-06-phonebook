@@ -1,9 +1,8 @@
 import { combineReducers } from 'redux';
-import { contactReducer, filterReducer } from './phonebook/phonebookReducers';
+import phonebookReducer from './phonebook/phonebookReducers';
 
 const rootReducer = combineReducers({
-  contacts: contactReducer,
-  filter: filterReducer,
+  phonebook: phonebookReducer,
 });
 
 export default rootReducer;

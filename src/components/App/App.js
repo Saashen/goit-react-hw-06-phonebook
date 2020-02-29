@@ -1,18 +1,59 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { CSSTransition } from 'react-transition-group';
+import PropTypes from 'prop-types';
 import styles from './App.module.css';
+
+import slideContactsTransition from '../../transitions/slideContacts.module.css';
+import slideLogoTransition from '../../transitions/slideLogo.module.css';
 
 import ContactForm from '../ContactForm/ContactFormContainer';
 import Filter from '../Filter/FilterContainer';
 import ContactList from '../ContactList/ContactListContainer';
 
-const App = () => (
-  <div className={styles.App}>
-    <h1 className={styles.Phonebook}>Phonebook</h1>
-    <ContactForm />
-    <h1 className={styles.Contacts}>Contacts</h1>
-    <Filter />
-    <ContactList />
-  </div>
-);
+// 1. перенести все з модуля 5
+// 2. додати reset
+// 3. поправити стилі
+// 4. додати верифікацію
 
-export default App;
+export default class App extends Component {
+  state = { isLoaded: false };
+
+  static propTypes = {
+    contacts: PropTypes.arrayOf(
+      PropTypes.shape({ id: PropTypes.string.isRequired }),
+    ).isRequired,
+  };
+
+  componentDidMount() {
+    this.setState({ isLoaded: true });
+  }
+
+  render() {
+    const { isLoaded } = this.state;
+    const { contacts } = this.props;
+
+    return (
+      <div className={styles.App}>
+        <CSSTransition
+          in={isLoaded}
+          timeout={500}
+          classNames={slideLogoTransition}
+        >
+          <h1 className={styles.Phonebook}>Phonebook</h1>
+        </CSSTransition>
+
+        <ContactForm />
+        <CSSTransition
+          in={contacts.length > 0}
+          timeout={500}
+          classNames={slideContactsTransition}
+          unmountOnExit
+        >
+          <h1 className={styles.Contacts}>Contacts</h1>
+        </CSSTransition>
+        <Filter />
+        <ContactList />
+      </div>
+    );
+  }
+}

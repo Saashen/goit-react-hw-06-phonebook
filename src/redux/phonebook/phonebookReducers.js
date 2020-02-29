@@ -1,33 +1,35 @@
 import { Type } from './phonebookActions';
 
-export const contactReducer = (state = [], { type, payload }) => {
+const initialState = {
+  contacts: [],
+  filter: '',
+};
+
+const phonebookReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case Type.ADD_CONTACT: {
-      const newContacts = [...state, payload.contact];
+      const newContacts = [...state.contacts, payload.contact];
       localStorage.setItem('contacts', JSON.stringify(newContacts));
-      return newContacts;
+      return { ...state, contacts: newContacts };
     }
 
     case Type.DELETE_CONTACT: {
-      const newContacts = state.filter(contact => contact.id !== payload.id);
+      const newContacts = state.contacts.filter(
+        contact => contact.id !== payload.id,
+      );
       localStorage.setItem('contacts', JSON.stringify(newContacts));
-      return newContacts;
+      return { ...state, contacts: newContacts };
     }
 
-    case Type.GET_CONTACT_FROM_LS:
-      return payload.contacts;
-
-    default:
-      return state;
-  }
-};
-
-export const filterReducer = (state = '', { type, payload }) => {
-  switch (type) {
     case Type.FILTER_CONTACT:
-      return payload.value;
+      return { contacts: state.contacts, filter: payload.value };
+
+    case Type.GET_CONTACT_FROM_LS:
+      return { ...state, contacts: payload.contacts };
 
     default:
       return state;
   }
 };
+
+export default phonebookReducer;
