@@ -1,12 +1,17 @@
 .Filter {
-  width: 266px;
+  width: 270px;
+  margin-top: 18px;
+  margin-bottom: 6px;
   display: flex;
   justify-content: space-between;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 16px;
 }
 
 .Caption {
-  font-family: 'Ubuntu', sans-serif;
-  font-size: 14px;
+  display: flex;
+  align-items: center;
+  height: 24px;
 }
 
 .Input {

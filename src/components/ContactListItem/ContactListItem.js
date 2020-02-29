@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import styles from './ContactListItem.module.css';
 
 const ContactListItem = ({ name, number, id, onDeleteContact }) => (
-  <li>
-    <span>
+  <li className={styles.Contact}>
+    <span className={styles.ContactInfo}>
       {name}: {number}
     </span>
     <button
-      className={styles.button}
+      className={styles.Button}
       type="button"
       onClick={() => onDeleteContact(id)}
     />

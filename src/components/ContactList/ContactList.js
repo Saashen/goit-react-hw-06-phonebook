@@ -27,7 +27,6 @@ const ContactList = ({ contacts, filter }) => {
             name={contact.name}
             number={contact.number}
             id={contact.id}
-            className={styles.Contact}
             key={contact.id}
           />
         </CSSTransition>

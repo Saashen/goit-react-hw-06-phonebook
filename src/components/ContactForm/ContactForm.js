@@ -85,11 +85,11 @@ export default class ContactForm extends Component {
         >
           <Alert />
         </CSSTransition>
-        <form className={styles.form} onSubmit={this.handleSubmit}>
-          <label className={styles.label} htmlFor={nameId}>
-            <span className={styles.caption}>Name</span>
+        <form className={styles.Form} onSubmit={this.handleSubmit}>
+          <label className={styles.Label} htmlFor={nameId}>
+            <span className={styles.Caption}>Name</span>
             <input
-              className={styles.input}
+              className={styles.Input}
               type="text"
               onChange={this.handleChange}
               value={name}
@@ -97,10 +97,10 @@ export default class ContactForm extends Component {
               id={nameId}
             />
           </label>
-          <label className={styles.label} htmlFor={numberId}>
-            <span className={styles.caption}>Number</span>
+          <label className={styles.Label} htmlFor={numberId}>
+            <span className={styles.Caption}>Number</span>
             <input
-              className={styles.input}
+              className={styles.Input}
               type="text"
               onChange={this.handleChange}
               value={number}
@@ -108,7 +108,7 @@ export default class ContactForm extends Component {
               id={numberId}
             />
           </label>
-          <button className={styles.button} type="submit">
+          <button className={styles.Button} type="submit">
             Add contact
           </button>
         </form>
