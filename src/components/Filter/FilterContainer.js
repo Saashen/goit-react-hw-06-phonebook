@@ -3,8 +3,8 @@ import * as pbActions from '../../redux/phonebook/phonebookActions';
 import Filter from './Filter';
 
 const mapStateToProps = state => ({
-  filter: state.filter,
-  contacts: state.contacts,
+  filter: state.phonebook.filter,
+  contacts: state.phonebook.contacts,
 });
 
 const mapDispatchToProps = dispatch => ({

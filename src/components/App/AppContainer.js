@@ -3,7 +3,7 @@ import App from './App';
 import * as pbActions from '../../redux/phonebook/phonebookActions';
 
 const mapStateToProps = state => ({
-  contacts: state.contacts,
+  contacts: state.phonebook.contacts,
 });
 
 const mapDispatchToProps = dispatch => ({

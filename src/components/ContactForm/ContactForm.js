@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import PropTypes from 'prop-types';
 
+import uuid from 'uuid/v4';
 import styles from './ContactForm.module.css';
 import slideAlertTransition from '../../transitions/slideAlert.module.css';
-import { id, contactID } from '../../constants';
+
 import Alert from '../Alert/Alert';
 
 export default class ContactForm extends Component {
@@ -12,6 +13,11 @@ export default class ContactForm extends Component {
     name: '',
     number: '',
     isAlert: false,
+  };
+
+  id = {
+    nameId: uuid(),
+    numberId: uuid(),
   };
 
   static propTypes = {
@@ -40,7 +46,7 @@ export default class ContactForm extends Component {
     const { name, number } = this.state;
 
     const contact = {
-      id: contactID,
+      id: uuid(),
       name,
       number,
     };
@@ -55,6 +61,8 @@ export default class ContactForm extends Component {
 
   render() {
     const { name, number, isAlert } = this.state;
+    const { nameId, numberId } = this.id;
+
     return (
       <>
         <CSSTransition
@@ -69,7 +77,7 @@ export default class ContactForm extends Component {
           <Alert />
         </CSSTransition>
         <form className={styles.Form} onSubmit={this.handleSubmit}>
-          <label className={styles.Label} htmlFor={id.nameId}>
+          <label className={styles.Label} htmlFor={nameId}>
             <span className={styles.Caption}>Name</span>
             <input
               className={styles.Input}
@@ -77,10 +85,10 @@ export default class ContactForm extends Component {
               onChange={this.handleChange}
               value={name}
               name="name"
-              id={id.nameId}
+              id={nameId}
             />
           </label>
-          <label className={styles.Label} htmlFor={id.numberId}>
+          <label className={styles.Label} htmlFor={numberId}>
             <span className={styles.Caption}>Number</span>
             <input
               className={styles.Input}
@@ -88,7 +96,7 @@ export default class ContactForm extends Component {
               onChange={this.handleChange}
               value={number}
               name="number"
-              id={id.numberId}
+              id={numberId}
             />
           </label>
           <button className={styles.Button} type="submit">
