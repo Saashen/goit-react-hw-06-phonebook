@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { CSSTransition } from 'react-transition-group';
+// import { CSSTransition } from 'react-transition-group';
 import PropTypes from 'prop-types';
 
 import styles from './ContactForm.module.css';
-import slideAlertTransition from '../../transitions/slideAlert.module.css';
+// import slideAlertTransition from '../../transitions/slideAlert.module.css';
 import { id, contactID } from '../../constants';
 import Alert from '../Alert/Alert';
 
@@ -28,11 +28,27 @@ export default class ContactForm extends Component {
       ? this.setState({ isAlert: true })
       : this.props.onAddContact({ ...contact });
 
-  handleChange = e => {
-    const { name, value } = e.target;
+  handleNameChange = e => {
+    const { value } = e.target;
+
     this.setState({
-      [name]: value,
+      name: value,
     });
+  };
+
+  handleNumberChange = e => {
+    const { value } = e.target;
+    const regexp = /^[-\s./0-9]*$/;
+
+    if (regexp.test(value)) {
+      this.setState({
+        number: value,
+      });
+    } else {
+      this.setState(prevState => ({
+        number: prevState.number,
+      }));
+    }
   };
 
   handleSubmit = e => {
@@ -57,7 +73,7 @@ export default class ContactForm extends Component {
     const { name, number, isAlert } = this.state;
     return (
       <>
-        <CSSTransition
+        {/* <CSSTransition
           in={isAlert}
           timeout={250}
           classNames={slideAlertTransition}
@@ -67,25 +83,26 @@ export default class ContactForm extends Component {
           }
         >
           <Alert />
-        </CSSTransition>
+        </CSSTransition> */}
         <form className={styles.Form} onSubmit={this.handleSubmit}>
           <label className={styles.Label} htmlFor={id.nameId}>
             <span className={styles.Caption}>Name</span>
             <input
               className={styles.Input}
               type="text"
-              onChange={this.handleChange}
+              onChange={this.handleNameChange}
               value={name}
               name="name"
               id={id.nameId}
             />
+            {isAlert && <Alert />}
           </label>
           <label className={styles.Label} htmlFor={id.numberId}>
             <span className={styles.Caption}>Number</span>
             <input
               className={styles.Input}
               type="text"
-              onChange={this.handleChange}
+              onChange={this.handleNumberChange}
               value={number}
               name="number"
               id={id.numberId}
