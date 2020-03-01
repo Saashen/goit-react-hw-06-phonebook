@@ -22,21 +22,12 @@ export default class ContactForm extends Component {
 
   static propTypes = {
     onAddContact: PropTypes.func.isRequired,
-    getContactFromLS: PropTypes.func.isRequired,
     contacts: PropTypes.arrayOf(
       PropTypes.shape({
         name: PropTypes.string,
       }),
     ).isRequired,
   };
-
-  componentDidMount() {
-    const contactsFromLS = localStorage.getItem('contacts');
-    if (contactsFromLS) {
-      const { getContactFromLS } = this.props;
-      getContactFromLS(JSON.parse(contactsFromLS));
-    }
-  }
 
   isInContactList = (contact, name) =>
     this.props.contacts.find(c => c.name.toLowerCase() === name.toLowerCase())
@@ -45,7 +36,6 @@ export default class ContactForm extends Component {
 
   handleChange = e => {
     const { name, value } = e.target;
-
     this.setState({
       [name]: value,
     });
@@ -72,6 +62,7 @@ export default class ContactForm extends Component {
   render() {
     const { name, number, isAlert } = this.state;
     const { nameId, numberId } = this.id;
+
     return (
       <>
         <CSSTransition

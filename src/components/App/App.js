@@ -10,9 +10,6 @@ import ContactForm from '../ContactForm/ContactFormContainer';
 import Filter from '../Filter/FilterContainer';
 import ContactList from '../ContactList/ContactListContainer';
 
-// 4. додати верифікацію
-// 5. переписати на ...
-
 export default class App extends Component {
   state = { isLoaded: false };
 
@@ -20,10 +17,17 @@ export default class App extends Component {
     contacts: PropTypes.arrayOf(
       PropTypes.shape({ id: PropTypes.string.isRequired }),
     ).isRequired,
+    getContactFromLS: PropTypes.func.isRequired,
   };
 
   componentDidMount() {
     this.setState({ isLoaded: true });
+
+    const contactsFromLS = localStorage.getItem('contacts');
+    if (contactsFromLS) {
+      const { getContactFromLS } = this.props;
+      getContactFromLS(JSON.parse(contactsFromLS));
+    }
   }
 
   render() {
