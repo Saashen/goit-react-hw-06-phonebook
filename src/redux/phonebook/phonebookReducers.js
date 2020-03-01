@@ -13,20 +13,18 @@ const initialState = {
 
 const phonebookReducer = createReducer(initialState, {
   [addContact]: (state, { payload }) => {
-    localStorage.setItem(
-      'contacts',
-      JSON.stringify([...state.contacts, payload]),
-    );
-    return { ...state, contacts: [...state.contacts, payload] };
+    const newContacts = [...state.contacts, payload];
+    localStorage.setItem(newContacts);
+    return { ...state, contacts: newContacts };
   },
   [deleteContact]: (state, { payload }) => {
-    localStorage.setItem(
-      'contacts',
-      JSON.stringify(state.contacts.filter(contact => contact.id !== payload)),
+    const newContacts = state.contacts.filter(
+      contact => contact.id !== payload,
     );
+    localStorage.setItem(newContacts);
     return {
       ...state,
-      contacts: state.contacts.filter(contact => contact.id !== payload),
+      contacts: newContacts,
     };
   },
   [filterContact]: (state, { payload }) => ({
