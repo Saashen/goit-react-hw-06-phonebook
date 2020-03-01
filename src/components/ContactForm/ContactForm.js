@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { CSSTransition } from 'react-transition-group';
+// import { CSSTransition } from 'react-transition-group';
 import PropTypes from 'prop-types';
 
 import styles from './ContactForm.module.css';
-import slideAlertTransition from '../../transitions/slideAlert.module.css';
+// import slideAlertTransition from '../../transitions/slideAlert.module.css';
 import { id, contactID } from '../../constants';
 import Alert from '../Alert/Alert';
 
@@ -73,6 +73,17 @@ export default class ContactForm extends Component {
     const { name, number, isAlert } = this.state;
     return (
       <>
+        {/* <CSSTransition
+          in={isAlert}
+          timeout={250}
+          classNames={slideAlertTransition}
+          unmountOnExit
+          onEntered={() =>
+            setTimeout(() => this.setState({ isAlert: false }), 1500)
+          }
+        >
+          <Alert />
+        </CSSTransition> */}
         <form className={styles.Form} onSubmit={this.handleSubmit}>
           <label className={styles.Label} htmlFor={id.nameId}>
             <span className={styles.Caption}>Name</span>
@@ -84,16 +95,7 @@ export default class ContactForm extends Component {
               name="name"
               id={id.nameId}
             />
-            <CSSTransition
-              in={isAlert}
-              timeout={250}
-              classNames={slideAlertTransition}
-              onEntered={() =>
-                setTimeout(() => this.setState({ isAlert: false }), 1500)
-              }
-            >
-              <Alert isAlert={isAlert} />
-            </CSSTransition>
+            {isAlert && <Alert />}
           </label>
           <label className={styles.Label} htmlFor={id.numberId}>
             <span className={styles.Caption}>Number</span>
