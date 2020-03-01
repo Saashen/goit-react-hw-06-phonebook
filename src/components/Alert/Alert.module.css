@@ -1,8 +1,13 @@
-.Alert {
+.HideAlert {
   width: 270px;
   padding-left: 126px;
   color: rgb(217, 100, 94);
   font-family: 'Ubuntu', sans-serif;
   font-size: 12px;
   opacity: 0;
+}
+
+.ShowAlert {
+  composes: HideAlert;
+  opacity: 1;
 }
