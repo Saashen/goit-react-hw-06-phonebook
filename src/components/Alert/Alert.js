@@ -2,7 +2,9 @@ import React from 'react';
 import styles from './Alert.module.css';
 
 const Alert = () => (
-  <span className={styles.Alert}>Contact already exists!</span>
+  <div className={styles.Alert}>
+    <p>Contact already exists!</p>
+  </div>
 );
 
 export default Alert;
