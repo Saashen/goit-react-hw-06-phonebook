@@ -1,8 +1,8 @@
-import { createStore } from 'redux';
-import { devToolsEnhancer } from 'redux-devtools-extension';
-// import phonebookReducer from './phonebook/phonebookReducers';
-import rootReducer from './rootReducer';
+import { configureStore } from '@reduxjs/toolkit';
+import phonebookReducer from './phonebook/phonebookReducers';
 
-const store = createStore(rootReducer, devToolsEnhancer());
+const store = configureStore({
+  reducer: phonebookReducer,
+});
 
 export default store;
