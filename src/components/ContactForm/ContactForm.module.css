@@ -10,8 +10,9 @@
 
 .Label {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 8px;
 }
 
 .Caption {
@@ -38,7 +39,7 @@
   border-radius: 4px;
   font: normal 16px Ubuntu, sans-serif;
   margin: 0 auto;
-  margin-top: 12px;
+  margin-top: 24px;
   padding: 4px 20px 5px;
   text-align: center;
   cursor: pointer;
